@@ -1,0 +1,15 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.IPonto" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.IPonto" parent="Base.Theme.IPonto" />
+    
+    <style name="theme.app.splash_screen" parent="theme.app.splash_screen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/img</item>
+        <item name="postSplashScreenTheme">@style/Base.Theme.IPonto</item>
+    </style>
+</resources>
