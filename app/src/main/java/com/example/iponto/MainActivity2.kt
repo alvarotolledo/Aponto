@@ -1,10 +1,15 @@
 package com.example.iponto
 
+import android.content.Intent
+import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.iponto.databinding.ActivityMain2Binding
+import java.util.Date
+import java.util.Locale
 
 private lateinit var binding: ActivityMain2Binding
+
 class MainActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMain2Binding.inflate(layoutInflater)
@@ -13,11 +18,9 @@ class MainActivity2 : AppCompatActivity() {
 
         recuperardados()
 
-            binding.textoValo.text = "€" + intent.getIntExtra("123", 0).toString()
+        binding.textoValo.text = "€" + intent.getIntExtra("123", 0).toString()
 
     }
-
-
 
 
     private fun recuperardados() {
@@ -34,16 +37,37 @@ class MainActivity2 : AppCompatActivity() {
                     binding.viewTv.text = contador.toString()
                 }
 
+                val now = Date()
+                val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                val timeFormat = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
+
+                val date = dateFormat.format(now)
+                val time = timeFormat.format(now)
+
+                val loou = contador
+                intent = Intent(this, MainActivity3::class.java)
+                intent.apply {
+                    intent.putExtra("valortotal", loou)
+                    intent.putExtra("data", date)
+                    intent.putExtra("hora", time)
+
+                }
+                startActivity(intent)
 
             }
+
 
         }
 
         binding.limpa.setOnClickListener {
-            binding.viewTv.setText("0")
-            contador = 0
+            clean()
         }
 
 
+    }
+
+    private fun clean() {
+        binding.viewTv.setText("0")
+        binding.textoValo.setText("0")
     }
 }
