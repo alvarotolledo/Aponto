@@ -21,7 +21,6 @@ class MainActivity3 : AppCompatActivity() {
 
 
         binding.textView3.text = valortotal.toString()
-         = data.toString()
 
     }
 }
